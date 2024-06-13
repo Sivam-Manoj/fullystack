@@ -3,7 +3,7 @@ const {
   registerAdmin,
   loginAdmin,
   getAdmin,
-} = require("../controllers/adminCOntroller");
+} = require("../controllers/adminController");
 const { adminProtect } = require("../middlewares/adminAuthMiddleware");
 const router = express.Router();
 

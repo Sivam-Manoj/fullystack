@@ -16,7 +16,7 @@ import AdminVideos from "./Pages/AdminVideos";
 import AdminNotes from "./Pages/AdminNotes";
 import AdminUpload from "./Pages/AdminUpload";
 import AdminProtectedPage from "./Pages/AdminProtectedPage";
-import { ToastContainer } from "react-toastify";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -61,7 +61,7 @@ const App = () => {
   return (
     <>
       <RouterProvider router={router} />
-      <ToastContainer limit={1} />
+
     </>
   );
 };
