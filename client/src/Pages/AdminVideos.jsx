@@ -61,11 +61,19 @@ const AdminVideos = () => {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="text-center text-2xl text-blue-500 animate-bounce ease-in-out">
+        Loading...
+      </div>
+    );
   }
 
   if (error) {
-    return <div>Error loading videos</div>;
+    return (
+      <div className="text-center text-2xl text-red-600 animate-bounce ease-in-out">
+        Error loading videos
+      </div>
+    );
   }
 
   const videoOptions = {

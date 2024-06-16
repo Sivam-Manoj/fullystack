@@ -16,11 +16,19 @@ const VideoPage = () => {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="text-center text-2xl text-blue-500 animate-bounce ease-in-out">
+        Loading...
+      </div>
+    );
   }
 
   if (error) {
-    return <div>Error loading notes</div>;
+    return (
+      <div className="text-center text-2xl text-red-600 animate-bounce ease-in-out">
+        Error loading notes
+      </div>
+    );
   }
 
   const videoOptions = {
@@ -53,7 +61,9 @@ const VideoPage = () => {
               key={video._id}
               className="p-4 border rounded-lg shadow-sm hover:shadow-lg transition-shadow"
             >
-              <h3 className="text-xl font-semibold mb-2 text-center">{video.title}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-center">
+                {video.title}
+              </h3>
 
               <div className="aspect-w-16 aspect-h-9">
                 <YouTube
