@@ -43,5 +43,5 @@ if (process.env.NODE_ENV === "production") {
 app.use(errorHandler);
 
 app.listen(port, () => {
-  console.log(`server running on ${req.host}${port}`);
+  console.log(`server running on ${process.env.BASE_URL}`);
 });
