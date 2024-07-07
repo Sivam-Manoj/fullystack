@@ -91,16 +91,16 @@ const Register = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-500">
+              <p className="text-[10px] text-gray-500">
                 Already a user?
-                <Link className="underline" to="/login">
+                <Link className="underline text-[10px]" to="/login">
                   {" "}
                   Sign in
                 </Link>
               </p>
               <button
                 type="submit"
-                className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
+                className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-[10px] font-medium text-white"
               >
                 Sign up
               </button>

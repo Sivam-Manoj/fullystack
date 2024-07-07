@@ -87,22 +87,22 @@ const Login = () => {
           {error && <p className="text-red-500">{error}</p>}
 
           <div className="flex items-center justify-between">
-            <p className="text-sm text-gray-500">
+            <p className="text-[10px] text-gray-500">
               No account?
-              <Link className="underline" to="/register">
+              <Link className="underline text-[10px]" to="/register">
                 Sign up
               </Link>
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-[10px] text-gray-500">
               admin?
-              <Link className="underline" to="/admin-login">
+              <Link className="underline text-[10px]" to="/admin-login">
                 Sign in as admin
               </Link>
             </p>
 
             <button
               type="submit"
-              className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
+              className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-[10px] font-medium text-white"
             >
               {!isLoading ? "Sign in" : "Loading..."}
             </button>
