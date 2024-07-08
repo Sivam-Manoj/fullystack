@@ -10,11 +10,12 @@ const AdminRegister = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
-  const { registerAdminUser } = useRegisterAdminUserMutation();
+  const [registerAdminUser] = useRegisterAdminUserMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
-    e.preventDefualt();
+    e.preventDefault();
     try {
       const response = await registerAdminUser({
         name,
@@ -23,116 +24,123 @@ const AdminRegister = () => {
         code,
       }).unwrap();
       dispatch(adminlogin(response));
-      toast.success(`user ${response.name} registered succesfull`);
+      toast.success(`User ${response.name} registered successfully`);
       navigate("/admin");
     } catch (error) {
-      toast.error(`${error.message ? error.message : error}`);
+      toast.error(error.message ? error.message : error);
     }
   };
+
   return (
-    <>
-      <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-lg">
-          <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
+    <section className="flex flex-wrap lg:h-screen lg:items-center bg-gradient-to-r from-purple-400 to-blue-500">
+      <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
+        <div className="mx-auto max-w-lg text-center text-white">
+          <h1 className="text-3xl font-bold sm:text-4xl">
             Get started as admin
           </h1>
-
-          <form
-            onSubmit={handleSubmit}
-            className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
-          >
-            <p className="text-center text-lg font-medium">
-              create your admin account
-            </p>
-            <div>
-              <label htmlFor="email" className="sr-only">
-                name
-              </label>
-
-              <div className="relative">
-                <input
-                  type="text"
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                  placeholder="Enter name"
-                  value={name}
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="email" className="sr-only">
-                Email
-              </label>
-
-              <div className="relative">
-                <input
-                  type="email"
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                  placeholder="Enter email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
-
-              <div className="relative">
-                <input
-                  type="password"
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                  placeholder="Enter password"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-            <div>
-              <label htmlFor="password" className="sr-only">
-                code
-              </label>
-
-              <div className="relative">
-                <input
-                  type="password"
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                  placeholder="Enter your secret code"
-                  autoComplete="false"
-                  value={code}
-                  onChange={(e) => {
-                    setCode(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
-            >
-              Sign up
-            </button>
-
-            <p className="text-center text-sm text-gray-500">
-              Already a admin?
-              <Link className="underline" to="/admin-login">
-                Sign in as admin
-              </Link>
-            </p>
-          </form>
         </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="mx-auto mb-0 mt-8 max-w-md space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+        >
+          <p className="text-center text-lg font-medium text-white">
+            Create your admin account
+          </p>
+
+          <div>
+            <label htmlFor="name" className="sr-only">
+              Name
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md focus:ring-2 focus:ring-purple-500"
+                placeholder="Enter name"
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="email" className="sr-only">
+              Email
+            </label>
+            <div className="relative">
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md focus:ring-2 focus:ring-purple-500"
+                placeholder="Enter email"
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="password" className="sr-only">
+              Password
+            </label>
+            <div className="relative">
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md focus:ring-2 focus:ring-purple-500"
+                placeholder="Enter password"
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="code" className="sr-only">
+              Secret Code
+            </label>
+            <div className="relative">
+              <input
+                type="password"
+                id="code"
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
+                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md focus:ring-2 focus:ring-purple-500"
+                placeholder="Enter your secret code"
+                autoComplete="off"
+                required
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            className="block w-full rounded-lg bg-purple-700 hover:bg-purple-800 px-5 py-3 text-sm font-medium text-white"
+          >
+            Sign up
+          </button>
+
+          <p className="text-center text-sm text-gray-300 mt-4">
+            Already an admin?
+            <Link className="underline text-[10px] ml-1" to="/admin-login">
+              Sign in as admin
+            </Link>
+          </p>
+        </form>
       </div>
-    </>
+
+      <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
+        <img
+          alt="Admin register background"
+          src="https://images.unsplash.com/photo-1630450202872-e0829c9d6172?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </div>
+    </section>
   );
 };
 
