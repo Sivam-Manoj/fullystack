@@ -25,7 +25,7 @@ const NotesPage = () => {
   };
 
   const handleDownload = (note) => {
-    fetch(`http://13.51.172.58:8000/notes/pdf/${note.filename}`)
+    fetch(`{process.env.BASE_URL}/notes/pdf/${note.filename}`)
       .then((response) => response.blob())
       .then((blob) => {
         const url = window.URL.createObjectURL(blob);
